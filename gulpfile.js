@@ -127,3 +127,14 @@ gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() 
   gulp.watch('*.html', browserSync.reload);
   gulp.watch('js/**/*.js', browserSync.reload);
 });
+
+var gulp = require('gulp');
+var deploy = require('gulp-gh-pages');
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+  return gulp.src("./dist/**/*")
+    .pipe(deploy())
+});
